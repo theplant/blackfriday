@@ -124,6 +124,15 @@ func TestEmphasis(t *testing.T) {
 		"odd *number\nof* markers* here\n",
 		"<p>odd <em>number\nof</em> markers* here</p>\n",
 
+		"marker is *next to character*at the right\n",
+		"<p>marker is <em>next to character</em>at the right</p>\n",
+
+		"marker is*next to character* at the left\n",
+		"<p>marker is<em>next to character</em> at the left</p>\n",
+
+		"marker is*next to character*at both side\n",
+		"<p>marker is<em>next to character</em>at both side</p>\n",
+
 		"simple _inline_ test\n",
 		"<p>simple <em>inline</em> test</p>\n",
 
@@ -144,6 +153,15 @@ func TestEmphasis(t *testing.T) {
 
 		"odd _number\nof_ markers_ here\n",
 		"<p>odd <em>number\nof</em> markers_ here</p>\n",
+
+		"marker is _next to character_at the right\n",
+		"<p>marker is <em>next to character</em>at the right</p>\n",
+
+		"marker is_next to character_ at the left\n",
+		"<p>marker is<em>next to character</em> at the left</p>\n",
+
+		"marker is_next to character_at both side\n",
+		"<p>marker is<em>next to character</em>at both side</p>\n",
 
 		"mix of *markers_\n",
 		"<p>mix of *markers_</p>\n",
