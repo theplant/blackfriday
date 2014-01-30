@@ -40,6 +40,13 @@ const (
 	HTML_USE_SMARTYPANTS                      // enable smart punctuation substitutions
 	HTML_SMARTYPANTS_FRACTIONS                // enable smart fractions (with HTML_USE_SMARTYPANTS)
 	HTML_SMARTYPANTS_LATEX_DASHES             // enable LaTeX-style dashes (with HTML_USE_SMARTYPANTS)
+
+	HTML_COMMON =                             // bundles common flags, used by MarkdownCommon
+		HTML_USE_XHTML |
+		HTML_USE_SMARTYPANTS |
+		HTML_SMARTYPANTS_FRACTIONS |
+		HTML_SMARTYPANTS_LATEX_DASHES |
+		HTML_SKIP_SCRIPT
 )
 
 // Html is a type that implements the Renderer interface for HTML output.

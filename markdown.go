@@ -42,6 +42,14 @@ const (
 	EXTENSION_NO_SPACE_LISTS                         // no need to put a space to start a list
 	EXTENSION_ONE_SPACE_INDENT                       // allow indent for list item when there is 1 or spaces
 	EXTENSION_UNICODE_LIST_ITEM                      // allow unicode as list item marker
+
+	EXTENSION_COMMON =                               // bundles common flags, used by MarkdownCommon
+		EXTENSION_NO_INTRA_EMPHASIS |
+		EXTENSION_TABLES |
+		EXTENSION_FENCED_CODE |
+		EXTENSION_AUTOLINK |
+		EXTENSION_STRIKETHROUGH |
+		EXTENSION_SPACE_HEADERS
 )
 
 // These are the possible flag values for the link renderer.
@@ -202,14 +210,7 @@ type parser struct {
 // MarkdownBasic is a convenience function for simple rendering.
 // It processes markdown input with no extensions enabled.
 func MarkdownBasic(input []byte) []byte {
-	// set up the HTML renderer
-	htmlFlags := HTML_USE_XHTML
-	renderer := HtmlRenderer(htmlFlags, "", "")
-
-	// set up the parser
-	extensions := 0
-
-	return Markdown(input, renderer, extensions)
+	return Markdown(input, HtmlRenderer(HTML_USE_XHTML, "", ""), 0)
 }
 
 // Call Markdown with most useful extensions enabled
@@ -230,25 +231,7 @@ func MarkdownBasic(input []byte) []byte {
 //
 // * Strict header parsing
 func MarkdownCommon(input []byte) []byte {
-	// set up the HTML renderer
-	htmlFlags := 0
-	htmlFlags |= HTML_USE_XHTML
-	htmlFlags |= HTML_USE_SMARTYPANTS
-	htmlFlags |= HTML_SMARTYPANTS_FRACTIONS
-	htmlFlags |= HTML_SMARTYPANTS_LATEX_DASHES
-	htmlFlags |= HTML_SKIP_SCRIPT
-	renderer := HtmlRenderer(htmlFlags, "", "")
-
-	// set up the parser
-	extensions := 0
-	extensions |= EXTENSION_NO_INTRA_EMPHASIS
-	extensions |= EXTENSION_TABLES
-	extensions |= EXTENSION_FENCED_CODE
-	extensions |= EXTENSION_AUTOLINK
-	extensions |= EXTENSION_STRIKETHROUGH
-	extensions |= EXTENSION_SPACE_HEADERS
-
-	return Markdown(input, renderer, extensions)
+	return Markdown(input, HtmlRenderer(HTML_COMMON, "", ""), EXTENSION_COMMON)
 }
 
 // Markdown is the main rendering function.
