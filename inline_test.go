@@ -242,25 +242,25 @@ func TestStrikeThrough(t *testing.T) {
 		"<p>nothing inline</p>\n",
 
 		"simple ~~inline~~ test\n",
-		"<p>simple <del>inline</del> test</p>\n",
+		"<p>simple <s>inline</s> test</p>\n",
 
 		"~~at the~~ beginning\n",
-		"<p><del>at the</del> beginning</p>\n",
+		"<p><s>at the</s> beginning</p>\n",
 
 		"at the ~~end~~\n",
-		"<p>at the <del>end</del></p>\n",
+		"<p>at the <s>end</s></p>\n",
 
 		"~~try two~~ in ~~one line~~\n",
-		"<p><del>try two</del> in <del>one line</del></p>\n",
+		"<p><s>try two</s> in <s>one line</s></p>\n",
 
 		"over ~~two\nlines~~ test\n",
-		"<p>over <del>two\nlines</del> test</p>\n",
+		"<p>over <s>two\nlines</s> test</p>\n",
 
 		"odd ~~number of~~ markers~~ here\n",
-		"<p>odd <del>number of</del> markers~~ here</p>\n",
+		"<p>odd <s>number of</s> markers~~ here</p>\n",
 
 		"odd ~~number\nof~~ markers~~ here\n",
-		"<p>odd <del>number\nof</del> markers~~ here</p>\n",
+		"<p>odd <s>number\nof</s> markers~~ here</p>\n",
 	}
 	doTestsInline(t, tests)
 }
