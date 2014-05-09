@@ -522,9 +522,9 @@ func (options *Html) TripleEmphasis(out *bytes.Buffer, text []byte) {
 }
 
 func (options *Html) StrikeThrough(out *bytes.Buffer, text []byte) {
-	out.WriteString("<del>")
+	out.WriteString("<s>")
 	out.Write(text)
-	out.WriteString("</del>")
+	out.WriteString("</s>")
 }
 
 func (options *Html) FootnoteRef(out *bytes.Buffer, ref []byte, id int) {
