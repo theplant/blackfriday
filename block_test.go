@@ -59,6 +59,11 @@ func doTestsBlock(t *testing.T, tests []string, extensions int) {
 
 func TestPrefixHeaderNoExtensions(t *testing.T) {
 	var tests = []string{
+		"#\n",
+		"<h1></h1>\n",
+		"# \n",
+		"<h1></h1>\n",
+
 		"# Header 1\n",
 		"<h1>Header 1</h1>\n",
 

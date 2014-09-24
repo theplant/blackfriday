@@ -193,13 +193,17 @@ func (p *parser) prefixHeader(out *bytes.Buffer, data []byte) int {
 	for end > 0 && data[end-1] == ' ' {
 		end--
 	}
+	content := []byte{}
 	if end > i {
-		work := func() bool {
-			p.inline(out, data[i:end])
-			return true
-		}
-		p.r.Header(out, work, level)
+		content = data[i:end]
 	}
+
+	work := func() bool {
+		p.inline(out, content)
+		return true
+	}
+	p.r.Header(out, work, level)
+
 	return skip
 }
 
