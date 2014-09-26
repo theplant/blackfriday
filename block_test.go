@@ -61,8 +61,32 @@ func TestPrefixHeaderNoExtensions(t *testing.T) {
 	var tests = []string{
 		"#\n",
 		"<h1></h1>\n",
+
 		"# \n",
 		"<h1></h1>\n",
+
+		`#
+
+![](/5018d345558fbe46c4000001/537f27fc18c8bca41a000010/file/5422741b6c08982b400000be/m/undefined "undefined")
+
+He Orders a beer.
+
+![](/5018d345558fbe46c4000001/537f27fc18c8bca41a000010/file/542274696c08982b400000da/m/undefined "undefined")
+
+# He Orders 0 beers.`,
+
+		`<h1></h1>
+
+<p><img src="/5018d345558fbe46c4000001/537f27fc18c8bca41a000010/file/5422741b6c08982b400000be/m/undefined" alt="" title="undefined" />
+</p>
+
+<p>He Orders a beer.</p>
+
+<p><img src="/5018d345558fbe46c4000001/537f27fc18c8bca41a000010/file/542274696c08982b400000da/m/undefined" alt="" title="undefined" />
+</p>
+
+<h1>He Orders 0 beers.</h1>
+`,
 
 		"# Header 1\n",
 		"<h1>Header 1</h1>\n",
@@ -120,6 +144,32 @@ func TestPrefixHeaderNoExtensions(t *testing.T) {
 			"<h1>Nested header</h1></li>\n</ul></li>\n</ul>\n",
 	}
 	doTestsBlock(t, tests, 0)
+}
+
+func TestNoListItemBlockExtension(t *testing.T) {
+	var tests = []string{
+
+		`# Title
+* a point
+  it worked?
+
+* second point
+
+* third point`,
+
+		`<h1>Title</h1>
+
+<ul>
+<li>a point
+it worked?</li>
+
+<li>second point</li>
+
+<li>third point</li>
+</ul>
+`,
+	}
+	doTestsBlock(t, tests, 0|EXTENSION_NO_LIST_ITEM_BLOCK)
 }
 
 func TestPrefixHeaderSpaceExtension(t *testing.T) {

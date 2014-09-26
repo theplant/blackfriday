@@ -42,6 +42,7 @@ const (
 	EXTENSION_NO_SPACE_LISTS                         // no need to put a space to start a list
 	EXTENSION_ONE_SPACE_INDENT                       // allow indent for list item when there is 1 or spaces
 	EXTENSION_UNICODE_LIST_ITEM                      // allow unicode as list item marker
+	EXTENSION_NO_LIST_ITEM_BLOCK                     // don't render blocks elements like p in list item
 )
 
 // These are the possible flag values for the link renderer.

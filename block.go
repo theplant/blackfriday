@@ -1169,7 +1169,7 @@ gatherlines:
 
 	// render the contents of the list item
 	var cooked bytes.Buffer
-	if *flags&LIST_ITEM_CONTAINS_BLOCK != 0 {
+	if *flags&LIST_ITEM_CONTAINS_BLOCK != 0 && p.flags&EXTENSION_NO_LIST_ITEM_BLOCK == 0 {
 		// intermediate render of block li
 		if sublist > 0 {
 			p.block(&cooked, rawBytes[:sublist])
