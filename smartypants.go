@@ -355,7 +355,7 @@ func smartypants(flags int) *smartypantsRenderer {
 	r['"'] = smartDoubleQuote
 	r['&'] = smartAmp
 	r['\''] = smartSingleQuote
-	r['('] = smartParens
+	// r['('] = smartParens
 	if flags&HTML_SMARTYPANTS_LATEX_DASHES == 0 {
 		r['-'] = smartDash
 	} else {
